@@ -476,7 +476,6 @@ function countYearsInOffice(presidentsArr) {
       return acc
     }
   }, 0);
-
   return totalYears;
 }
 
@@ -510,20 +509,36 @@ console.log(sortedPresidents);
 
 
 // BONUS: Iteration 8 | Age At Inauguration - `map()`
-function getAgeAtInauguration(presidentsArr) { }
+// CORRECTION
+function getAgeAtInauguration(presidentsArr) {
+  const updatedPres = presidentsArr.map((president) => {
+    const presidentCopy = { ...president }
+    presidentCopy.getAgeAtInauguration = president.tookOffice - president.birthYear
+    return presidentCopy
+  })
+  return updatedPres
+}
 
-// console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
+console.log("ageAtInauguration(presidents)", ageAtInauguration(presidents));
 
 
 
 
 // BONUS: Iteration 9 | Presidents Born After - `filter()`
-function getPresidentsBornAfter(presidentsArr, year) { }
+// CORRECTION
+function getPresidentsBornAfter(presidentsArr, year) {
+  return presidentsArr.fileter((onePresidebt) => onePresident.birthYear > year)
+}
 
-// console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
+console.log("getPresidentsBornAfter(presidents)", getPresidentsBornAfter(presidents));
 
 
 
 
 // BONUS: Iteration 10: Sort Presidents by Name - `sort()`
-function sortPresidentsByName(presidentsArr) { }
+function sortPresidentsByName(presidentsArr) {
+  const copy = [...presidentsArr]
+  return copy.sort((presA, presB) => {
+    return presA.name.localeCompare(presB.name, undefined, { sensitivity: "base" })
+  })
+}
